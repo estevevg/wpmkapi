@@ -5,6 +5,7 @@ services:
     image: 'everdura/mk8api'
     environment:
       PORT: 3000
+      BD: 'localhost'
     ports:
       - 3000:3000
     links:
