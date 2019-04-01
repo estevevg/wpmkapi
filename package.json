@@ -4,7 +4,8 @@
   "description": "World Tornament Mario Kart API for classifications",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "start": "node app.js"
   },
   "author": "e.verdura",
   "license": "ISC",

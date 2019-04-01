@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  api:
+    image: 'everdura/mk8api'
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017

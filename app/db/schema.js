@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
 
 var Schema = mongoose.Schema;
 var models = {};
@@ -9,7 +8,7 @@ function createUserSchema() {
     if(!models['user']){
         var User = new Schema({
             username: {type: String, index: { unique: true }},
-            distId: Schema.ObjectId
+            wc: [Schema.ObjectId]
         }, {collection: 'user'});
 
         models['user'] = mongoose.model('user', User);
@@ -17,35 +16,40 @@ function createUserSchema() {
     return models['user'];
 }
 
-
 function createWorldCupSchema() {
 
     if(!models['worldcup']){
         var WorldCup = new Schema({
           initDate: Date,
           endDate: Date,
-          status: String,
+          state: String,
           name: String,
-          rules: String,
+          rules: Object,
           part: [Schema.ObjectId],
-          class: String,
+          classif: Object,
           gps: [Schema.ObjectId]
 
-        }, {collection: 'warranty'});
+        }, {collection: 'worldcup'});
 
-        models['warranty'] = mongoose.model('warranty', Warranty);
+        models['worldcup'] = mongoose.model('worldcup', WorldCup);
     }
 
-    return models['warranty'];
+    return models['worldcup'];
 }
 
 function createGPSchema() {
   if(!models['gp']){
     var GP = new Schema({
+      name: String,
+      worldcup: Schema.ObjectId,
       date: Date,
-      courses: String
-    });
+      courses: Object
+    }, {collection: 'gp'});
+
+    models['gp'] = mongoose.model('gp', GP);
   }
+
+  return models['gp'];
 }
 
 
