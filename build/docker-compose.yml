@@ -5,7 +5,7 @@ services:
     image: 'everdura/mk8api'
     environment:
       PORT: 3000
-      BD: 'localhost'
+      DB: 'mongodb://mongo:27017/mk8'
     ports:
       - 3000:3000
     links:
@@ -15,3 +15,5 @@ services:
     restart: always
     ports:
       - 27017
+    environment:
+      - MONGODB_DATABASE=mk8

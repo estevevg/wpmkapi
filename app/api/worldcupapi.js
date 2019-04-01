@@ -78,7 +78,6 @@ module.exports = {
   getCurrentWorldCup: getCurrentWorldCup,
   getWorldCup: getWorldCup,
   createWorldCup: createWorldCup,
-  updateWorldCup: updateWorldCup,
-  getGP: getGP
+  updateWorldCup: updateWorldCup
 
 };

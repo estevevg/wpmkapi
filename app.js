@@ -2,7 +2,7 @@ var schema = require('./app/db/schema.js');
 var settings = require('./app/settings');
 var auth = require('./app/models/auth');
 
-var user = require('./app/api/userapi');
+var user = require('./app/api/usersapi');
 var worldcup = require('./app/api/worldcupapi');
 var gp = require('./app/api/gpapi');
 
@@ -12,9 +12,11 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var dbconnection = process.env.DB | settings.db.host
+var dbconnection = process.env.DB || settings.db.host
 
-mongoose.connect(dbconnection);
+console.log(dbconnection);
+
+//mongoose.connect(dbconnection);
 
 // MIDDLEWARES
 
@@ -28,13 +30,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/worldcup', worldcup.getAllWorldCups);
 app.get('/worldcup/current', worldcup.getCurrentWorldCup);
 app.get('/worldcup/:id', worldcup.getWorldCup);
-app.get('/worldcup/:id/gps', worldcup.getGP);
 
-app.post('/worldcup', worldcup.createWC);
+//app.post('/worldcup', worldcup.createWorlCup);
 
 // GP Grand Prix
+app.get('/worldcup/:id/gp', gp.getGPs);
 app.post('/worldcup/:id/gp', gp.createGP);
 app.get('/gp/:id', gp.getGP);
+
+
+// Disclaimer
+app.get('/', function(req, res, next) {
+    res.send(200, "This is the MK8API")
+})
+
 
 // Running the server
 
