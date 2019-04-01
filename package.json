@@ -1,0 +1,11 @@
+{
+  "name": "mkapi",
+  "version": "1.0.0",
+  "description": "World Tornament Mario Kart API for classifications",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "e.verdura",
+  "license": "ISC"
+}
