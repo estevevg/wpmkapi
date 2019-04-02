@@ -4,7 +4,7 @@ var settings = {
         port: 3000
     },
     db: {
-        host: 'dbhost'
+        host: 'mongodb://localhost:27017/mk8'
 
     }
 };

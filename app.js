@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var dbconnection = process.env.DB || settings.db.host
+var dbconnection = process.env.MONGODB_URI || settings.db.host
 
 console.log(dbconnection);
 
-//mongoose.connect(dbconnection);
+mongoose.connect(dbconnection);
 
 // MIDDLEWARES
 
