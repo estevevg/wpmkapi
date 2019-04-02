@@ -35,4 +35,14 @@ WorldCup.prototype.getWorldCup = function(id, callback) {
     });
 }
 
+WorldCup.prototype.addUserToCup = function(id, user, callback) {
+  
+}
+
+WorldCup.prototype.createWorldCup = function(wc, callback) {
+  wcModel.save(wc, function(err, wc) {
+        callback(err, wc);
+    });
+}
+
 module.exports = WorldCup;

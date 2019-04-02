@@ -48,7 +48,14 @@ function updateWorldCup(req, res, next) {
  * Creates a worldcup
  **/
 function createWorldCup(req, res, next){
-
+  var wc = req.body;
+  worldcup.createWorldCup(wc, function(err, ret) {
+    if(err) {
+      res.send(400);
+    } else {
+      res.send(200, parseWorldCup(wc));
+    }
+  });
 }
 
 function parseWorldCups(inp) {
