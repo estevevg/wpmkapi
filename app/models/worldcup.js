@@ -5,7 +5,8 @@ function WorldCup () {
 
 }
 
-WorldCup.prototype.getWorldCups = function(callback) {
+WorldCup.prototype.getAllWorldCups = function(callback) {
+  var wcModel = schema.createWorldCupSchema();
   wcModel.find({},function(error, worldcups) {
         if(error) {
             callback(error);
@@ -13,9 +14,10 @@ WorldCup.prototype.getWorldCups = function(callback) {
             callback(null, worldcups);
         }
     });
-}
+};
 
 WorldCup.prototype.getCurrentWorldCup = function(callback) {
+  var wcModel = schema.createWorldCupSchema();
   wcModel.findOne({current: "current"},function(error, worldcup) {
         if(error) {
             callback(error);
@@ -23,9 +25,10 @@ WorldCup.prototype.getCurrentWorldCup = function(callback) {
             callback(null, worldcup);
         }
     });
-}
+};
 
 WorldCup.prototype.getWorldCup = function(id, callback) {
+  var wcModel = schema.createWorldCupSchema();
   wcModel.findOne({_id:id},function(error, worldcup) {
         if(error) {
             callback(error);
@@ -33,16 +36,17 @@ WorldCup.prototype.getWorldCup = function(id, callback) {
             callback(null, worldcup);
         }
     });
-}
-
-WorldCup.prototype.addUserToCup = function(id, user, callback) {
-  
-}
+};
 
 WorldCup.prototype.createWorldCup = function(wc, callback) {
+  var wcModel = schema.createWorldCupSchema();
   wcModel.save(wc, function(err, wc) {
         callback(err, wc);
     });
-}
+};
+
+WorldCup.prototype.addUserToCup = function(id, user, callback) {
+
+};
 
 module.exports = WorldCup;

@@ -34,7 +34,7 @@ function createWorldCupSchema() {
         models['worldcup'] = mongoose.model('worldcup', WorldCup);
     }
 
-    return models['worldcup'];
+    return new models['worldcup'];
 }
 
 function createGPSchema() {

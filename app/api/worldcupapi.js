@@ -1,9 +1,10 @@
-var worldcup = require('../models/worldcup')
+var WorldCup = require('../models/worldcup')
 
 /**
  * Gets all the worldcups
  **/
 function getAllWorldCups(req, res, next) {
+  var worldcup = new WorldCup();
   worldcup.getAllWorldCups(function(err, worlcups){
     if(err){
       return res.send(400);
@@ -17,6 +18,7 @@ function getAllWorldCups(req, res, next) {
  * Gets the current worldcup
  **/
 function getCurrentWorldCup(req, res, next) {
+  var worldcup = new WorldCup();
   worldcup.getCurrentWorldCup( function(err, worldcups) {
     if(err) {
       return res.send(400);
@@ -30,6 +32,7 @@ function getCurrentWorldCup(req, res, next) {
  * Gets the specifies worldcup
  **/
 function getWorldCup(req, res, next){
+  var worldcup = new WorldCup();
   var wcId = req.param('id');
   worldcup.getWorldCup(wcId, function(err, worldcups) {
     if(err) {
@@ -44,7 +47,9 @@ function getWorldCup(req, res, next){
  * Creates a worldcup
  **/
 function createWorldCup(req, res, next){
+  var worldcup = new WorldCup();
   var wc = req.body;
+  console.log(wc);
   worldcup.createWorldCup(wc, function(err, ret) {
     if(err) {
       res.send(400);
@@ -86,7 +91,6 @@ module.exports = {
   getAllWorldCups: getAllWorldCups,
   getCurrentWorldCup: getCurrentWorldCup,
   getWorldCup: getWorldCup,
-  createWorldCup: createWorldCup,
-  updateWorldCup: updateWorldCup
+  createWorldCup: createWorldCup
 
 };
