@@ -7,8 +7,6 @@ function WorldCup () {
 }
 
 WorldCup.prototype.getAllWorldCups = function(callback) {
-
-  console.log(wcModel);
   wcModel.find(function(error, worldcups) {
         if(error) {
             callback(error);
