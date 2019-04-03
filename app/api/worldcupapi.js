@@ -1,4 +1,5 @@
-var WorldCup = require('../models/worldcup')
+var WorldCup = require('../models/worldcup');
+var Users = require('../models/user');
 
 /**
  * Gets all the worldcups
@@ -49,13 +50,20 @@ function getWorldCup(req, res, next){
 function createWorldCup(req, res, next){
   var worldcup = new WorldCup();
   var wc = req.body;
-  console.log(wc);
-  worldcup.createWorldCup(wc, function(err, ret) {
-    if(err) {
-      res.send(400);
-    } else {
-      res.send(200, parseWorldCup(wc));
+  var users = new Users();
+  users.getAllUsers(function(err, users) {
+    var u = [];
+    for(var i=0; i<users.length; ++i) {
+      u.push(users[i]._id);
     }
+    wc['part'] = u;
+    worldcup.createWorldCup(wc, function(err, ret) {
+      if(err) {
+        res.send(400);
+      } else {
+        res.send(200, parseWorldCup(wc));
+      }
+    });
   });
 }
 

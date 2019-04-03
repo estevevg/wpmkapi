@@ -33,6 +33,10 @@ app.get('/worldcup/:id', worldcup.getWorldCup);
 
 app.post('/worldcup', worldcup.createWorldCup);
 
+// Users
+app.post('/users', user.createUser);
+app.get('/users', user.getUsers);
+
 // GP Grand Prix
 app.get('/worldcup/:id/gp', gp.getGPs);
 app.post('/worldcup/:id/gp', gp.createGP);

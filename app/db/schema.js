@@ -8,6 +8,7 @@ function createUserSchema() {
     if(!models['user']){
         var User = new Schema({
             username: {type: String, index: { unique: true }},
+            name: String,
             wc: [Schema.ObjectId]
         }, {collection: 'user'});
 
@@ -24,9 +25,9 @@ function createWorldCupSchema() {
           endDate: Date,
           state: String,
           name: String,
-          rules: Object,
+          rules: String,
           part: [Schema.ObjectId],
-          classif: Object,
+          classif: String,
           gps: [Schema.ObjectId]
 
         }, {collection: 'worldcup'});
