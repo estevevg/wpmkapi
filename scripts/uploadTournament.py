@@ -15,7 +15,7 @@ def readTournament():
 
 def main():
 
-    r = requests.post("http://localhost:3000/worldcup", data=readTournament())
+    r = requests.post("https://mk8api.herokuapp.com/worldcup", data=readTournament())
     print(r.text)
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ services:
     image: 'everdura/mk8api'
     environment:
       PORT: 3000
-      MONGODB_URI: 'mongodb://mongo:27017/mk8'
+      MONGODB_URI: 'mongodb://admin:secret@172.17.50.107:27017/mk8'
     ports:
       - 3000:3000
     links:
@@ -16,4 +16,6 @@ services:
     ports:
       - 27017
     environment:
-      - MONGODB_DATABASE=mk8
+      - MONGO_INITDB_DATABASE: mk8
+      - MONGO_INITDB_ROOT_PASSWORD: secret
+      - MONGO_INITDB_ROOT_USERNAME: admin

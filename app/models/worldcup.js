@@ -1,4 +1,5 @@
 var schema = require('../db/schema');
+
 var wcModel = schema.createWorldCupSchema();
 
 function WorldCup () {
@@ -6,8 +7,9 @@ function WorldCup () {
 }
 
 WorldCup.prototype.getAllWorldCups = function(callback) {
-  var wcModel = schema.createWorldCupSchema();
-  wcModel.find({},function(error, worldcups) {
+
+  console.log(wcModel);
+  wcModel.find(function(error, worldcups) {
         if(error) {
             callback(error);
         } else {
@@ -17,7 +19,7 @@ WorldCup.prototype.getAllWorldCups = function(callback) {
 };
 
 WorldCup.prototype.getCurrentWorldCup = function(callback) {
-  var wcModel = schema.createWorldCupSchema();
+
   wcModel.findOne({current: "current"},function(error, worldcup) {
         if(error) {
             callback(error);
@@ -28,7 +30,7 @@ WorldCup.prototype.getCurrentWorldCup = function(callback) {
 };
 
 WorldCup.prototype.getWorldCup = function(id, callback) {
-  var wcModel = schema.createWorldCupSchema();
+
   wcModel.findOne({_id:id},function(error, worldcup) {
         if(error) {
             callback(error);
@@ -39,7 +41,7 @@ WorldCup.prototype.getWorldCup = function(id, callback) {
 };
 
 WorldCup.prototype.createWorldCup = function(wc, callback) {
-  var wcModel = schema.createWorldCupSchema();
+  var inst = new wcModel(wc);
   wcModel.save(wc, function(err, wc) {
         callback(err, wc);
     });
