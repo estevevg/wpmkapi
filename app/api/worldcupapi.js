@@ -5,7 +5,7 @@ var WorldCup = require('../models/worldcup')
  **/
 function getAllWorldCups(req, res, next) {
   var worldcup = new WorldCup();
-  worldcup.getAllWorldCups(function(err, worlcups){
+  worldcup.getAllWorldCups(function(err, worldcups){
     if(err){
       return res.send(400);
     } else {
