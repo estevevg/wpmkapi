@@ -31,7 +31,7 @@ app.get('/worldcup', worldcup.getAllWorldCups);
 app.get('/worldcup/current', worldcup.getCurrentWorldCup);
 app.get('/worldcup/:id', worldcup.getWorldCup);
 
-//app.post('/worldcup', worldcup.createWorlCup);
+app.post('/worldcup', worldcup.createWorldCup);
 
 // GP Grand Prix
 app.get('/worldcup/:id/gp', gp.getGPs);

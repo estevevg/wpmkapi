@@ -40,10 +40,6 @@ function getWorldCup(req, res, next){
   });
 }
 
-function updateWorldCup(req, res, next) {
-
-}
-
 /**
  * Creates a worldcup
  **/
@@ -57,6 +53,12 @@ function createWorldCup(req, res, next){
     }
   });
 }
+
+function updateWorldCup(req, res, next) {
+
+}
+
+
 
 function parseWorldCups(inp) {
   ret = []
