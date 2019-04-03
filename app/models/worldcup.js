@@ -40,7 +40,7 @@ WorldCup.prototype.getWorldCup = function(id, callback) {
 
 WorldCup.prototype.createWorldCup = function(wc, callback) {
   var inst = new wcModel(wc);
-  wcModel.save(wc, function(err, wc) {
+  inst.save(wc, function(err, wc) {
         callback(err, wc);
     });
 };
