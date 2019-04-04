@@ -43,7 +43,7 @@ function createGPSchema() {
       name: String,
       worldcup: Schema.ObjectId,
       date: Date,
-      courses: Object
+      courses: String
     }, {collection: 'gp'});
 
     models['gp'] = mongoose.model('gp', GP);
