@@ -45,8 +45,30 @@ WorldCup.prototype.createWorldCup = function(wc, callback) {
     });
 };
 
-WorldCup.prototype.addUserToCup = function(id, user, callback) {
-
+WorldCup.prototype.updateWorldCup = function(id, wc, callback) {
+    wcModel.update({_id: id}, parseWorldCup(wc), function(err, r) {
+        callback(err, r);
+    });
 };
+
+
+function parseWorldCup(wc) {
+    var nwc = {};
+    putData(nwc, 'initDate', gp.initDate);
+    putData(nwc, 'endDate', gp.endDate);
+    putData(nwc, 'state', gp.state);
+    putData(nwc, 'name', gp.name);
+    putData(nwc, 'rules', gp.rules);
+    putData(nwc, 'part', gp.part);
+    putData(nwc, 'classif', gp.classif);
+    putData(nwc, 'gps', gp.gps);
+    return nwc;
+  }
+  
+  function putData(war, id, data){
+    if(data){
+        war[id] = data;
+    }
+  }
 
 module.exports = WorldCup;

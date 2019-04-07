@@ -42,6 +42,9 @@ app.get('/worldcup/:id/gp', gp.getGPs);
 app.post('/worldcup/:id/gp', gp.createGP);
 app.get('/worldcup/:id/nextgp', gp.getNextGP);
 app.get('/gp/:id', gp.getGP);
+app.put('/gp/:id', gp.updateGP);
+app.put('/gp/:id/result', gp.updateGPResult);
+app.get('/gp/:id/result', gp.gpGetResults);
 
 
 // Disclaimer

@@ -43,6 +43,29 @@ GP.prototype.getNextGP = function(cupId, callback) {
   });
 };
 
+GP.prototype.updateGP = function(id, up, callback) {
+  gpModel.update({_id:id}, parseGP(up), function(err, updated){
+    callback(err, updated);
+  });
+};
+
+function parseGP(gp) {
+  var ngp = {};
+  putData(ngp, 'gpname', gp.gpname);
+  putData(ngp, 'worldcup', gp.worldcup);
+  putData(ngp, 'cdate', gp.cdate);
+  putData(ngp, 'courses', gp.courses);
+  putData(ngp, 'result', gp.result);
+  return ngp;
+}
+
+function putData(war, id, data){
+  if(data){
+      war[id] = data;
+  }
+}
+
+
 function compareDates(current, next) {
   var mod = 1000*60*60*24;
   console.log(current.getTime() - next.getTime());

@@ -44,7 +44,8 @@ function createGPSchema() {
       gpname: String,
       worldcup: Schema.ObjectId,
       cdate: Date,
-      courses: String
+      courses: String,
+      result: String
 
     }, {collection: 'gp'});
 

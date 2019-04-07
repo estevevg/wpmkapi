@@ -68,7 +68,16 @@ function createWorldCup(req, res, next){
 }
 
 function updateWorldCup(req, res, next) {
-
+  var wcId = req.param('id');
+  var wc = req.body;
+  var wcin = new WorldCup();
+  wcin.updateWorldCup(wcId, wc, function(err, wc) {
+    if(err) {
+      return res.send(400);
+    } else {
+      return res.send(400, parseWorldCup(wc));
+    }
+  });
 }
 
 
@@ -99,6 +108,7 @@ module.exports = {
   getAllWorldCups: getAllWorldCups,
   getCurrentWorldCup: getCurrentWorldCup,
   getWorldCup: getWorldCup,
-  createWorldCup: createWorldCup
+  createWorldCup: createWorldCup,
+  updateWorldCup: updateWorldCup
 
 };
