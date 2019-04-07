@@ -103,17 +103,27 @@ function gpGetResults(req, res, next) {
       return res.send(200, "No s'ha fet la cursa encara "+gp['gpname']);
     } else {
       result = JSON.parse(gp['result']);
-      return res.send(200, printResults(result));
+      res.writeHeader(200, {"Content-Type": "text/html"});  
+      res.write(printResults(result));  
+      res.end(); 
+      //return res.send(200, printResults(result));
     }
   });
 }
 
 function printResults(result) {
-  var points = '';
+  var points = [];
   for(key in result) {
-    points += key+': '+result[key]+"\n";
+    points.push({'nick':key, 'points': result[key]});
   }
-  return points
+  points.sort(function(a, b) {
+    return b['points'] - a['points'];
+  });
+  var ret = '<html><div>';
+  for(var i=0; i<points.length; ++i) {
+    ret += '<p>'+points[i]['nick']+': '+points[i]['points']+'</p>';
+  }
+  return ret+'</div></html>';
 
 }
 

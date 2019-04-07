@@ -4,7 +4,7 @@ var settings = {
         port: 3000
     },
     db: {
-        host: 'mongodb://admin:secret@172.17.50.107:27017/mk8'
+        host: 'mongodb://localhost:27017/newdock'
 
     }
 };
