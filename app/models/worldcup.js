@@ -54,14 +54,14 @@ WorldCup.prototype.updateWorldCup = function(id, wc, callback) {
 
 function parseWorldCup(wc) {
     var nwc = {};
-    putData(nwc, 'initDate', gp.initDate);
-    putData(nwc, 'endDate', gp.endDate);
-    putData(nwc, 'state', gp.state);
-    putData(nwc, 'name', gp.name);
-    putData(nwc, 'rules', gp.rules);
-    putData(nwc, 'part', gp.part);
-    putData(nwc, 'classif', gp.classif);
-    putData(nwc, 'gps', gp.gps);
+    putData(nwc, 'initDate', wc.initDate);
+    putData(nwc, 'endDate', wc.endDate);
+    putData(nwc, 'state', wc.state);
+    putData(nwc, 'name', wc.name);
+    putData(nwc, 'rules', wc.rules);
+    putData(nwc, 'part', wc.part);
+    putData(nwc, 'classif', wc.classif);
+    putData(nwc, 'gps', wc.gps);
     return nwc;
   }
   

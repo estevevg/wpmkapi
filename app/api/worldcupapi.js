@@ -80,6 +80,35 @@ function updateWorldCup(req, res, next) {
   });
 }
 
+function getClassification(req, res, next){
+  var worldcup = new WorldCup();
+  var wcId = req.param('id');
+  worldcup.getWorldCup(wcId, function(err, worldcups) {
+    if(err) {
+      return res.send(400);
+    } else {
+      var results = JSON.parse(worldcups['classif']);
+      return res.send(200, printResults(results));
+    }
+  });
+  
+}
+
+function printResults(result) {
+  var points = [];
+  for(key in result) {
+    points.push({'nick':key, 'points': result[key]});
+  }
+  points.sort(function(a, b) {
+    return b['points'] - a['points'];
+  });
+  var ret = '<html><div>';
+  for(var i=0; i<points.length; ++i) {
+    ret += '<p>'+points[i]['nick']+': '+points[i]['points']+'</p>';
+  }
+  return ret+'</div></html>';
+
+}
 
 
 function parseWorldCups(inp) {
@@ -109,6 +138,7 @@ module.exports = {
   getCurrentWorldCup: getCurrentWorldCup,
   getWorldCup: getWorldCup,
   createWorldCup: createWorldCup,
-  updateWorldCup: updateWorldCup
+  updateWorldCup: updateWorldCup,
+  getClassification: getClassification
 
 };

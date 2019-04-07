@@ -32,6 +32,7 @@ app.get('/worldcup/current', worldcup.getCurrentWorldCup);
 app.get('/worldcup/:id', worldcup.getWorldCup);
 
 app.post('/worldcup', worldcup.createWorldCup);
+app.get('/worldcup/:id/classification', worldcup.getClassification);
 
 // Users
 app.post('/users', user.createUser);

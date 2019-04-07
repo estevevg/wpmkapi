@@ -70,6 +70,35 @@ function updateGP(req, res, next){
   });
 }
 
+function updateWorldCup(wc, result) {
+  var points = [];
+  for(key in result) {
+    points.push({'nick':key, 'points': result[key]});
+  }
+  points.sort(function(a, b) {
+    return b['points'] - a['points'];
+  });
+  var c = {}
+  if(wc['classif']) {
+    c = JSON.parse(wc['classif']);
+  }
+  var rules = JSON.parse(wc['rules']);
+  for(var i=0; i < points.length; ++i) {
+    if(!c[points[i]['nick']]) {
+      c[points[i]['nick']] = 0
+    }
+    var pos = i+1
+    c[points[i]['nick']] += rules['position'][''+pos];
+  }
+  wc['classif'] = JSON.stringify(c);
+  var w = new WorldCup();
+  w.updateWorldCup(wc['id'], wc, function(err, wcc) {
+    if(err) {
+      console.log(err);
+    }
+  });
+}
+
 function updateGPResult(req, res, next) {
   var gpId = req.param('id');
   var gpRes = req.body;
@@ -79,6 +108,7 @@ function updateGPResult(req, res, next) {
       return res.send(400)
     } else {
       var result = createResult(JSON.parse(gpRes['courses']), JSON.parse(worldcup['rules']));
+      updateWorldCup(worldcup, result);
       gpRes['result'] = JSON.stringify(result);
       var gp = new GP();
       gp.updateGP(gpId, gpRes, function(err, up) {
