@@ -20,7 +20,7 @@ function getAllWorldCups(req, res, next) {
  **/
 function getCurrentWorldCup(req, res, next) {
   var worldcup = new WorldCup();
-  worldcup.getCurrentWorldCup( function(err, worldcups) {
+  worldcup.getCurrentWorldCup(function(err, worldcups) {
     if(err) {
       return res.send(400);
     } else {

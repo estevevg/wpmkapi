@@ -18,7 +18,7 @@ WorldCup.prototype.getAllWorldCups = function(callback) {
 
 WorldCup.prototype.getCurrentWorldCup = function(callback) {
 
-  wcModel.findOne({current: "current"},function(error, worldcup) {
+  wcModel.findOne({state: "current"},function(error, worldcup) {
         if(error) {
             callback(error);
         } else {

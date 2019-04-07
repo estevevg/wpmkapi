@@ -38,12 +38,14 @@ function createWorldCupSchema() {
 }
 
 function createGPSchema() {
+
   if(!models['gp']){
     var GP = new Schema({
-      name: String,
+      gpname: String,
       worldcup: Schema.ObjectId,
-      date: Date,
+      cdate: Date,
       courses: String
+
     }, {collection: 'gp'});
 
     models['gp'] = mongoose.model('gp', GP);

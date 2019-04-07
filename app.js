@@ -40,6 +40,7 @@ app.get('/users', user.getUsers);
 // GP Grand Prix
 app.get('/worldcup/:id/gp', gp.getGPs);
 app.post('/worldcup/:id/gp', gp.createGP);
+app.get('/worldcup/:id/nextgp', gp.getNextGP);
 app.get('/gp/:id', gp.getGP);
 
 
