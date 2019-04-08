@@ -87,8 +87,8 @@ function getClassification(req, res, next){
     if(err) {
       return res.send(400);
     } else {
-      if(!worldcup['classif']){
-        return res.send(200, "There is still no results for "+worldcup['name']);
+      if(!worldcups['classif']){
+        return res.send(200, "There is still no results for "+worldcups['name']);
       }
       var results = JSON.parse(worldcups['classif']);
       return res.send(200, printResults(results));
