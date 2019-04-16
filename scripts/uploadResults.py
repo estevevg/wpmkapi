@@ -13,7 +13,7 @@ def getGP(gpnum, wcId):
     for gp in gps:
         if str(gpnum) in gp['gpname']:
             return gp
-    
+
 
 def readResults(gpnum):
     with open('data/results.csv') as config_file:
@@ -42,7 +42,7 @@ def getCourseResult(col, m):
     return results
 
 def main():
-    gpnum = 1
+    gpnum = 2
     gp = getGP(gpnum, getCurrentWC())
     results = readResults(gpnum)
     courses = json.loads(gp['courses'])
