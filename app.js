@@ -9,6 +9,7 @@ var gp = require('./app/api/gpapi');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var path = require('path');
 
 var app = express();
 
@@ -50,30 +51,29 @@ app.get('/gp/:id/result', gp.gpGetResults);
 
 // Disclaimer
 app.get('/', function(req, res, next) {
-    res.send(200, "This is the unizite demo showcase")
+    res.send(200, "This is the unizite demo showcase or not")
 })
 
-
-// Running the server
-reload(app).then(function (reloadReturned) {
-
-  var port = process.env.PORT || settings.app.port;
-
-  var server = app.listen(port, function () {
-
-  	var host = server.address().address;
-  	var port = server.address().port;
-
-  	console.log('MK8 API is running at '+ 'port')
-
-  });
-}).catch(function(err) {
-  console.error('Reload could not start, could not start server/sample app', err);
+app.get('/demo', function(req, res, next) {
+  res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 
-  process.on('uncaughtException', function (err) {
-      console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
-      console.error(err.stack);
-      process.exit(1);
-  });
+// Running the server
+var port = process.env.PORT || settings.app.port;
+
+var server = app.listen(port, function () {
+
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log('MK8 API is running at '+ 'port')
+
+});
+
+
+process.on('uncaughtException', function (err) {
+    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+    console.error(err.stack);
+    process.exit(1);
+});
