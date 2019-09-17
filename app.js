@@ -50,7 +50,7 @@ app.get('/gp/:id/result', gp.gpGetResults);
 
 // Disclaimer
 app.get('/', function(req, res, next) {
-    res.send(200, "This is the MK8API")
+    res.send(200, "This is the unizite demo showcase")
 })
 
 
