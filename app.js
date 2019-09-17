@@ -55,21 +55,25 @@ app.get('/', function(req, res, next) {
 
 
 // Running the server
+reload(app).then(function (reloadReturned) {
 
-var port = process.env.PORT || settings.app.port;
+  var port = process.env.PORT || settings.app.port;
 
-var server = app.listen(port, function () {
+  var server = app.listen(port, function () {
 
-	var host = server.address().address;
-	var port = server.address().port;
+  	var host = server.address().address;
+  	var port = server.address().port;
 
-	console.log('MK8 API is running at '+ 'port')
+  	console.log('MK8 API is running at '+ 'port')
 
+  });
+}).catch(function(err) {
+  console.error('Reload could not start, could not start server/sample app', err);
 });
 
 
-process.on('uncaughtException', function (err) {
-    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
-    console.error(err.stack);
-    process.exit(1);
-});
+  process.on('uncaughtException', function (err) {
+      console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+      console.error(err.stack);
+      process.exit(1);
+  });
